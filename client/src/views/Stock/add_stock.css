@@ -1,0 +1,22 @@
+.add_stock_container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.add_stock_container form{
+    margin-top: 100px;
+    min-width: 350px;
+}
+
+.add_stock_container form .btn_group{
+    margin-top: 20px;
+    width: fit-content;
+    margin-left: auto;
+    display: block;
+    display: flex;
+    gap: 10px;
+    position: sticky;
+    bottom: 30px;
+}

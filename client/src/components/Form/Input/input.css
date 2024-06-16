@@ -1,0 +1,27 @@
+
+form .form_group{
+    width: 100%;
+    padding: 10px;
+    box-shadow: 5px 5px #1679AB;
+    border: 1px solid #333;
+    margin-top: 25px;
+}
+
+form .form_group .form_label{
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+form .form_group .form_input{
+    width: 100%;
+    border: 1px solid #333;
+    margin-top: 10px;
+    padding: 4px 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+form .form_group .form_input:focus{
+    outline: 0;
+}

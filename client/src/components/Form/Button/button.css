@@ -1,0 +1,26 @@
+.btn{
+    border: none;
+    padding: 10px 15px;
+    box-shadow: 3px 3px #333;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: .1s all ease-in;
+}
+
+.btn-primary {
+    background-color: #1679AB;
+    color: #fff;
+    padding: 10px 25px;
+}
+
+.btn-grey {
+    background-color: #f4f4f4;
+    color: #333;
+    border: 1px solid #333;
+}
+
+.btn:hover{
+    box-shadow: 0px 0px #333;
+    transform: translate(1.5px, 1.5px);
+}
