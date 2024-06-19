@@ -6,7 +6,7 @@
 }
 
 .add_stock_container form{
-    margin-top: 100px;
+    margin-top: 50px;
     min-width: 350px;
 }
 
@@ -19,4 +19,8 @@
     gap: 10px;
     position: sticky;
     bottom: 30px;
+}
+
+.add_stock_container .total{
+    margin-top: 10px;
 }
