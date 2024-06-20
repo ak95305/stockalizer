@@ -45,7 +45,7 @@ function AddStock() {
     };
     
     axios
-      .post("http://localhost:3000/api/stock/", { ...newStock })
+      .post("http://64.23.178.25:3000/api/stock/", { ...newStock })
       .then((resp)=>{
         console.log(resp)
       })
