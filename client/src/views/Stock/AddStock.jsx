@@ -45,7 +45,7 @@ function AddStock() {
     };
     
     axios
-      .post("https://stockalizer-server.vercel.app//api/stock/", { ...newStock })
+      .post("http://localhost:3000/api/stock/", { ...newStock })
       .then((resp)=>{
         console.log(resp)
       })
