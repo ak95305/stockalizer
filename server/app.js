@@ -5,20 +5,17 @@ const bodyParser = require('body-parser')
 const HttpError = require('./models/http-error')
 const mongoose = require("mongoose")
 const cors = require('cors')
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 const app = express()
 
 app.use(cors())
-// app.use(cors({
-//     origin: ['*'],
-//     credentials: true
-// }));
 
 app.use(bodyParser.json())
 
 app.use("/api/stock", stocksRouter)
-
-// app.use("/api/users", userRouter)
 
 app.use((req, res, next) => {
     throw new HttpError("Could not find this route", 404)
@@ -32,9 +29,9 @@ app.use((error, req, res, next) => {
     res.json({message: error.message || 'An Unkown Error Occurred!'})
 })
 
-mongoose.connect(`mongodb+srv://ak669212:sxmTtF79qEjUOF2l@cluster0.lqsee3s.mongodb.net/stockalizer?retryWrites=true&w=majority&appName=Cluster0`)
+mongoose.connect(process.env.APP_MONGO_DB_URL)
 .then(()=>{
     console.log("Connecte to DB!")
-    app.listen(3000);
+    app.listen(process.env.APP_PORT);
 })
 .catch(err => console.log(err))
