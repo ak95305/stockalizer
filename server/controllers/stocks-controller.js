@@ -27,7 +27,7 @@ const getAllStocks = async (req, res, next) => {
         stocks = await Stock.find()
 
         if(!stocks || stocks.length == 0){
-            return next(new HttpError("No place can be found with provided user id.", 404));
+            return next(new HttpError("No Stock Available.", 404));
         }
     } catch(err){
         const error = new HttpError("Unable to find places", 400)

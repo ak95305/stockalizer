@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './num-input.css'
-import Button from '../Button/button'
+import Button from '../Button/Button'
 
 function NumInput({ closeNumBox, submitNumBox, name, value }) {
   const [result, setResult] = useState(value ? value : '')

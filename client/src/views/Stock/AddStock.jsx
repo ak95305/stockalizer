@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './add_stock.css'
 import Input from '../../components/Form/Input/Input'
-import Button from '../../components/Form/Button/button'
+import Button from '../../components/Form/Button/Button'
 import NumInput from '../../components/Form/NumInput/NumInput'
 import { postApi } from '../../utils/helper'
 
@@ -56,6 +56,16 @@ function AddStock() {
     }
   }
 
+  const resetFormHandler = () => {
+    setFormData({
+      lotNo: '',
+      desc: '',
+      qty: '',
+      price: '',
+      date: ''
+    })
+  }
+
   return (
     <>
         <h1>Add Stock</h1>
@@ -77,8 +87,7 @@ function AddStock() {
 
                 { apiMessage }
                 <div className="btn_group">
-                  <Button btnType='grey' label='Reset' className='reset_btn' />
-                  <Button btnType='primary' label='Next' className='submit_btn' />
+                  <Button btnType='primary' label='Add' className='submit_btn' formBtnType='submit' />
                 </div>
             </form>
         </div>
