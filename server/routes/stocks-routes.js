@@ -8,7 +8,8 @@ const router = express.Router();
 
 // router.get("/user/:uid", stocksController.getPlaceByUserId)
 
-// router.post("/", authToken, stocksController.createPlace)
+router.get("/", stocksController.getAllStocks)
+
 router.post("/", stocksController.createStock)
 
 // router.patch("/:pid", stocksController.udpatePlaceById)

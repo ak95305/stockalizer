@@ -21,23 +21,21 @@ const Validator = require('validatorjs')
 //     res.json({ place: place.toObject({ getters: true }) })
 // }
 
-// const getPlaceByUserId = async (req, res, next) => {
-//     const userId = req.params.uid
-    
-//     let places;
-//     try{
-//         places = await Place.find({ createdBy: userId })
-//         console.log(places)
-//         if(!places || places.length == 0){
-//             return next(new HttpError("No place can be found with provided user id.", 404));
-//         }
-//     } catch(err){
-//         const error = new HttpError("Unable to find places", 400)
-//         return next(error)
-//     }
-//     res.status(200)
-//     res.json({ places: places.map(item => item.toObject({ getters: true }))})
-// }
+const getAllStocks = async (req, res, next) => {
+    let stocks;
+    try{
+        stocks = await Stock.find()
+
+        if(!stocks || stocks.length == 0){
+            return next(new HttpError("No place can be found with provided user id.", 404));
+        }
+    } catch(err){
+        const error = new HttpError("Unable to find places", 400)
+        return next(error)
+    }
+    res.status(200)
+    res.json({ stocks: stocks.map(item => item.toObject({ getters: true }))})
+}
 
 const createStock = async (req, res, next) => {
     let { lotNo, desc, qty, price } = req.body
@@ -141,7 +139,7 @@ const createStock = async (req, res, next) => {
 // }
 
 // exports.getPlaceById = getPlaceById
-// exports.getPlaceByUserId = getPlaceByUserId
+exports.getAllStocks = getAllStocks
 exports.createStock = createStock
 // exports.udpatePlaceById = udpatePlaceById
 // exports.deletePlaceById = deletePlaceById

@@ -8,11 +8,11 @@ const cors = require('cors')
 
 const app = express()
 
-// app.use(cors())
-app.use(cors({
-    origin: ['*'],
-    credentials: true
-}));
+app.use(cors())
+// app.use(cors({
+//     origin: ['*'],
+//     credentials: true
+// }));
 
 app.use(bodyParser.json())
 
@@ -35,6 +35,6 @@ app.use((error, req, res, next) => {
 mongoose.connect(`mongodb+srv://ak669212:sxmTtF79qEjUOF2l@cluster0.lqsee3s.mongodb.net/stockalizer?retryWrites=true&w=majority&appName=Cluster0`)
 .then(()=>{
     console.log("Connecte to DB!")
-    app.listen(8080);
+    app.listen(3000);
 })
 .catch(err => console.log(err))
