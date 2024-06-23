@@ -38,20 +38,22 @@ const getAllStocks = async (req, res, next) => {
 }
 
 const createStock = async (req, res, next) => {
-    let { lotNo, desc, qty, price } = req.body
+    let { lotNo, desc, qty, price, date } = req.body
     
     let data = {
         lotNo: lotNo,
         desc: desc,
         qty: qty,
-        price: price
+        price: price,
+        date: date
     }
 
     let rules = {
         lotNo: 'required',
         desc: 'required',
         qty: 'required',
-        price: 'required'
+        price: 'required',
+        date: 'required'
     }
 
     let validation = new Validator(data, rules)
@@ -65,7 +67,8 @@ const createStock = async (req, res, next) => {
         lotNo: lotNo,
         desc: desc,
         qty: qty,
-        price: price
+        price: price,
+        date: date
     })
 
     try{

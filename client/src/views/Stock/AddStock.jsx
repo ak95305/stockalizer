@@ -3,7 +3,6 @@ import './add_stock.css'
 import Input from '../../components/Form/Input/Input'
 import Button from '../../components/Form/Button/button'
 import NumInput from '../../components/Form/NumInput/NumInput'
-import axios from 'axios'
 import { postApi } from '../../utils/helper'
 
 function AddStock() {
@@ -13,7 +12,8 @@ function AddStock() {
     lotNo: '',
     desc: '',
     qty: '',
-    price: ''
+    price: '',
+    date: ''
   })
 
   const handleNumBox = (e, type) => {
@@ -43,7 +43,8 @@ function AddStock() {
         lotNo: formData.lotNo,
         desc: formData.desc,
         qty: formData.qty,
-        price: formData.price
+        price: formData.price,
+        date: formData.date
     };
     
     const data = await postApi('stock', newStock)
@@ -71,6 +72,8 @@ function AddStock() {
                 {
                   numBox && <NumInput closeNumBox={closeNumBox} submitNumBox={submitNumBox} name={numBox} value={ formData[numBox] } />
                 }
+
+                <Input type='date' onChange={handleInputChange} name="date" label='Date' value={ formData.date }/>
 
                 { apiMessage }
                 <div className="btn_group">

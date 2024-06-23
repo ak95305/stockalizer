@@ -31,7 +31,7 @@ app.use((error, req, res, next) => {
 
 mongoose.connect(process.env.APP_MONGO_DB_URL)
 .then(()=>{
-    console.log("Connecte to DB!")
+    console.log("Connecte to DB!", process.env.APP_PORT)
     app.listen(process.env.APP_PORT);
 })
 .catch(err => console.log(err))

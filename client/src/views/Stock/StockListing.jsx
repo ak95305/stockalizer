@@ -29,6 +29,7 @@ function StockListing() {
                             <div style={{ border: "1px solid #333", marginBottom: "10px", padding: "10px" }}>
                                 <p>Lot No. <b>{item.lotNo}</b></p>
                                 <p>Desc. <b>{item.desc}</b></p>
+                                <p>Desc. <b>{item.date && Date(item.date).substring(0, 15)}</b></p>
                                 <p>Qty. <b>{item.qty}</b></p>
                                 <p>Price <b>{item.price}</b></p>
                                 <p>Total <b>{item.qty * item.price}</b></p>

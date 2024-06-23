@@ -8,3 +8,8 @@ header .heading {
     border: 1px solid #333;
 }
 
+header a {
+    text-decoration: none;
+    color: #000;
+}
+
