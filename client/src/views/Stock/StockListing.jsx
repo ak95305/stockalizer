@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import './add_stock.css'
 import axios from 'axios'
+import { getApi } from '../../utils/helper'
 
 function StockListing() {
     const [stocks, setStocks] = useState([])
 
+    const getStocks = async () => {
+        let data = await getApi('stock')
+        if(data.status) {
+            setStocks(data.resp.data.stocks)
+        }
+    }
+
     useEffect(()=>{
-        axios
-        .get("http://localhost:3000/api/stock")
-        .then((resp)=>{
-          setStocks(resp.data.stocks)
-        })
-        .catch((err)=>{
-          console.log(err)
-        })
+        getStocks()
     }, [])
 
   return (
     <>
         <h1>Stock Listing</h1>
 
-        <div className="stock_listing_container">
+        <div className="stock_listing_container" style={{ marginTop: "20px" }}>
             {
                 stocks && stocks.map((item, index) => {
                     return (

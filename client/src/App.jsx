@@ -12,25 +12,16 @@ import StockListing from './views/Stock/StockListing'
 // ])
 
 function App() {
-
   return (
     <>
       <Header />
       
       <main>
-        {/* <RouterProvider router={router} /> */}
-        <Router>
+        <Router basename={import.meta.env.APP_STATIC_BASE_PATH}>
           <div>
-            {/* <Routes>
-              <Route exact path="/" component={<AddStock />} />
-            </Routes> */}
             <Switch>
-              <Route path="/stocks">
-                <StockListing />
-              </Route>
-              <Route path="/">
-                <AddStock />
-              </Route>
+              <Route exact path="/" component={AddStock} />
+              <Route path="/stocks" component={StockListing} />
             </Switch>
           </div>
         </Router>

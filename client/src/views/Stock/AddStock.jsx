@@ -4,6 +4,7 @@ import Input from '../../components/Form/Input/Input'
 import Button from '../../components/Form/Button/button'
 import NumInput from '../../components/Form/NumInput/NumInput'
 import axios from 'axios'
+import { postApi } from '../../utils/helper'
 
 function AddStock() {
   const [numBox, setNumBox] = useState('')
@@ -35,7 +36,7 @@ function AddStock() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
 
     let newStock = {
@@ -45,16 +46,13 @@ function AddStock() {
         price: formData.price
     };
     
-    axios
-      .post("http://64.23.178.25:3000/api/stock/", { ...newStock })
-      .then((resp)=>{
-        console.log(resp)
-        setApiMessage('Success')
-      })
-      .catch((err)=>{
-        console.log(err)
-        setApiMessage("Something's Wrong")
-      })
+    const data = await postApi('stock', newStock)
+
+    if(data.status) {
+      setApiMessage('Success')
+    } else {
+      setApiMessage('Something\'s Wrong')
+    }
   }
 
   return (
