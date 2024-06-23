@@ -7,6 +7,7 @@ import axios from 'axios'
 
 function AddStock() {
   const [numBox, setNumBox] = useState('')
+  const [apiMessage, setApiMessage] = useState('')
   const [formData, setFormData] = useState({
     lotNo: '',
     desc: '',
@@ -48,9 +49,11 @@ function AddStock() {
       .post("http://64.23.178.25:3000/api/stock/", { ...newStock })
       .then((resp)=>{
         console.log(resp)
+        setApiMessage('Success')
       })
       .catch((err)=>{
         console.log(err)
+        setApiMessage("Something's Wrong")
       })
   }
 
@@ -71,6 +74,7 @@ function AddStock() {
                   numBox && <NumInput closeNumBox={closeNumBox} submitNumBox={submitNumBox} name={numBox} value={ formData[numBox] } />
                 }
 
+                { apiMessage }
                 <div className="btn_group">
                   <Button btnType='grey' label='Reset' className='reset_btn' />
                   <Button btnType='primary' label='Next' className='submit_btn' />
