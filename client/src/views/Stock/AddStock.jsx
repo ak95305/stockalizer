@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './stock.css'
 import Input from '../../components/Form/Input/Input'
-import Button from '../../components/Form/Button/Button'
 import NumInput from '../../components/Form/NumInput/NumInput'
 import { postApi } from '../../utils/helper'
+import Button from '../../components/Form/Button/Button'
 
 function AddStock() {
   const [numBox, setNumBox] = useState('')
