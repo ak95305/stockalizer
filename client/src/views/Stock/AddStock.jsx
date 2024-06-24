@@ -56,16 +56,6 @@ function AddStock() {
     }
   }
 
-  const resetFormHandler = () => {
-    setFormData({
-      lotNo: '',
-      desc: '',
-      qty: '',
-      price: '',
-      date: ''
-    })
-  }
-
   return (
     <>
         <h1>Add Stock</h1>
