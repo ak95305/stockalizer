@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './add_stock.css'
+import './stock.css'
 import Input from '../../components/Form/Input/Input'
 import Button from '../../components/Form/Button/Button'
 import NumInput from '../../components/Form/NumInput/NumInput'
@@ -87,7 +87,7 @@ function AddStock() {
 
                 { apiMessage }
                 <div className="btn_group">
-                  <Button btnType='primary' label='Add' className='submit_btn' formBtnType='submit' />
+                  <Button btnType='primary' label='Submit' className='submit_btn' formBtnType='submit' />
                 </div>
             </form>
         </div>

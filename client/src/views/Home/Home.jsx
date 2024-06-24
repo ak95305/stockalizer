@@ -22,24 +22,24 @@ function Home() {
             }
         ]
     },
-    {
-        id:'workers',
-        title: 'Workers',
-        options: [
-            {
-                id: 1,
-                title: 'Workers Listings',
-                url: '/workers',
-                icon_url: './layers.svg'
-            },
-            {
-                id: 2,
-                title: 'Add Worker',
-                url: '/add-worker',
-                icon_url: './layers_add.svg'
-            }
-        ]
-    }
+    // {
+    //     id:'workers',
+    //     title: 'Workers',
+    //     options: [
+    //         {
+    //             id: 1,
+    //             title: 'Workers Listings',
+    //             url: '/workers',
+    //             icon_url: './layers.svg'
+    //         },
+    //         {
+    //             id: 2,
+    //             title: 'Add Worker',
+    //             url: '/add-worker',
+    //             icon_url: './layers_add.svg'
+    //         }
+    //     ]
+    // }
   ]
 
   return (
@@ -50,7 +50,7 @@ function Home() {
                     return (
                         <div className="option_box" key={item.id}>
                             <div className="option_heading">{ item.title }</div>
-                            <div className="option_lists">
+                            <div className="option_lists" style={{ gridTemplateColumns: `repeat(${item.options.length}, 1fr)` }}>
                                 {
                                     item.options && item.options.map((item, index) => {
                                         return (

@@ -11,7 +11,8 @@
 
 .home_container .option_box .option_lists{
     margin-top: 15px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 .home_container .option_box .option_lists .opt img{
@@ -20,7 +21,7 @@
 
 .home_container .option_box .option_lists .opt{
     border: 1px solid #333;
-    min-width: 120px;
+    /* min-width: 120px; */
     text-align: center;
     padding: 10px;
     /* height: 100px; */

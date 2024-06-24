@@ -1,0 +1,83 @@
+.add_stock_container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.add_stock_container form{
+    margin-top: 20px;
+    min-width: 350px;
+}
+
+.add_stock_container form .btn_group{
+    margin-top: 20px;
+    width: fit-content;
+    margin-left: auto;
+    display: block;
+    display: flex;
+    gap: 10px;
+    position: sticky;
+    bottom: 30px;
+}
+
+.add_stock_container .total{
+    margin-top: 10px;
+}
+
+.heading_container{
+    position: relative;
+}
+
+.filter_box{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.filter_box .filter_icon{
+    border: 1px solid #333;
+    box-shadow: 3px 3px #1679AB;
+    background-color: unset;
+    padding: 3px;
+}
+
+.filter_box .filter_icon.clicked{
+    border: 1px solid #333;
+    box-shadow: 1.5px 1.5px #1679AB;
+    transform: translate(1.5px, 1.5px);
+    background-color: unset;
+    padding: 3px;
+}
+
+.stock_filter{
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000032;
+    padding: 20px;
+    z-index: 999;
+}
+
+.stock_filter .inner_filter{
+    width: 100%;
+    background-color: #fff;
+    padding: 40px 15px;
+}
+
+.stock_filter .filter_heading{
+    font-size: 18px;
+    text-align: center;
+    color: #000;
+    font-weight: 700;
+}
+
+.stock_filter .btn_group{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;    
+}

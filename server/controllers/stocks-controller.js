@@ -22,10 +22,28 @@ const Validator = require('validatorjs')
 // }
 
 const getAllStocks = async (req, res, next) => {
+    let matchCondition = {}
+    let fromDate
+    if(req.query.from_date) {
+        fromDate = new Date(req.query.from_date)
+        matchCondition.date = { $gte: fromDate }
+    } 
+    
+    let toDate
+    if(req.query.to_date) {
+        toDate = new Date(req.query.to_date)
+        matchCondition.date = { $lte: toDate }
+    }
+    console.log(matchCondition)
     let stocks;
     try{
-        stocks = await Stock.find()
-
+        // stocks = await Stock.find()
+        stocks = await Stock.aggregate([
+            {
+                $match: matchCondition
+            }
+        ])
+        
         if(!stocks || stocks.length == 0){
             return next(new HttpError("No Stock Available.", 404));
         }
@@ -34,7 +52,7 @@ const getAllStocks = async (req, res, next) => {
         return next(error)
     }
     res.status(200)
-    res.json({ stocks: stocks.map(item => item.toObject({ getters: true }))})
+    res.json({ stocks })
 }
 
 const createStock = async (req, res, next) => {
