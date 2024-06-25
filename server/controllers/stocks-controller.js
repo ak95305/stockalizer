@@ -23,15 +23,24 @@ const Validator = require('validatorjs')
 
 const getAllStocks = async (req, res, next) => {
     let matchCondition = {}
-    let fromDate
+
+    if(req.query.search) {
+        let searchTerm = req.query.search
+        let parseNum = Number(req.query.search)
+        matchCondition.$or = []
+        matchCondition.$or.push({lotNo: isNaN(parseNum) ? searchTerm : parseNum})
+        matchCondition.$or.push({desc: isNaN(parseNum) ? searchTerm : parseNum})
+        matchCondition.$or.push({qty: isNaN(parseNum) ? searchTerm : parseNum})
+        matchCondition.$or.push({price: isNaN(parseNum) ? searchTerm : parseNum})
+    }
+
     if(req.query.from_date) {
-        fromDate = new Date(req.query.from_date)
+        let fromDate = new Date(req.query.from_date)
         matchCondition.date = { $gte: fromDate }
     } 
     
-    let toDate
     if(req.query.to_date) {
-        toDate = new Date(req.query.to_date)
+        let toDate = new Date(req.query.to_date)
         matchCondition.date = { $lte: toDate }
     }
     console.log(matchCondition)
@@ -41,6 +50,11 @@ const getAllStocks = async (req, res, next) => {
         stocks = await Stock.aggregate([
             {
                 $match: matchCondition
+            },
+            {
+                $sort: {
+                    date : -1
+                }
             }
         ])
         

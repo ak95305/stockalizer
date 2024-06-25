@@ -36,6 +36,11 @@
     transform: translateY(-50%);
 }
 
+.search_box{
+    left: unset;
+    right: 0;
+}
+
 .filter_box .filter_icon{
     border: 1px solid #333;
     box-shadow: 3px 3px #1679AB;
@@ -80,4 +85,35 @@
     display: flex;
     justify-content: flex-end;
     gap: 10px;    
+}
+
+.stock_box {
+    position: relative;
+}
+
+.stock_box div{
+    border: 1px solid #333; 
+    margin-bottom: 10px;
+    padding: 10px;
+    padding-bottom: 25px;
+}
+
+.stock_box .date_box{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    border: 1px solid #333;
+    font-weight: 400;
+    padding: 1px 4px;
+}
+
+.stock_box .total_box{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 12px;
+    border: 1px solid #333;
+    font-weight: 400;
+    padding: 1px 4px;
 }

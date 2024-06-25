@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import Input from '../../components/Form/Input/Input'
 import Button from '../../components/Form/Button/Button'
 
-function StockFilter({ filterSubmit, closeFilter }) {
+function StockFilter({ filterSubmit, closeFilter, value }) {
     const [fitlerData, setFilterData] = useState({
-        from_date: '',
-        to_date: ''
+        from_date: value.from_date || '',
+        to_date: value.to_date || ''
     })
 
     const handleInputChange = (e) => {
@@ -15,6 +15,13 @@ function StockFilter({ filterSubmit, closeFilter }) {
     const handleFilterSubmit = (e) => {
         e.preventDefault()
         filterSubmit(fitlerData)
+    }
+
+    const resetFilter = () => {
+        setFilterData({
+            from_date: '',
+            to_date: ''
+        })
     }
 
   return (
@@ -27,7 +34,8 @@ function StockFilter({ filterSubmit, closeFilter }) {
 
                 <div className="btn_group">
                   <Button btnType='grey' label='Close' className='submit_btn' onClick={closeFilter}/>
-                  <Button btnType='primary' label='Add' className='submit_btn' formBtnType='submit' />
+                  <Button btnType='primary' label='Reset' className='submit_btn' onClick={resetFilter}/>
+                  <Button btnType='primary' label='Submit' className='submit_btn' formBtnType='submit' />
                 </div>
             </form>
         </div>
