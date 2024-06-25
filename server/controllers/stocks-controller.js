@@ -27,11 +27,12 @@ const getAllStocks = async (req, res, next) => {
     if(req.query.search) {
         let searchTerm = req.query.search
         let parseNum = Number(req.query.search)
+        searchTerm = isNaN(parseNum) ? searchTerm : parseNum;
         matchCondition.$or = []
-        matchCondition.$or.push({lotNo: isNaN(parseNum) ? searchTerm : parseNum})
-        matchCondition.$or.push({desc: isNaN(parseNum) ? searchTerm : parseNum})
-        matchCondition.$or.push({qty: isNaN(parseNum) ? searchTerm : parseNum})
-        matchCondition.$or.push({price: isNaN(parseNum) ? searchTerm : parseNum})
+        matchCondition.$or.push({lotNo: { $regex: new RegExp(searchTerm, 'i') }})
+        matchCondition.$or.push({desc: { $regex: new RegExp(searchTerm, 'i') }})
+        matchCondition.$or.push({qty: { $regex: new RegExp(searchTerm, 'i') }})
+        matchCondition.$or.push({price: { $regex: new RegExp(searchTerm, 'i') }})
     }
 
     if(req.query.from_date) {
