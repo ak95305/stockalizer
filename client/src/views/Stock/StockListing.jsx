@@ -4,11 +4,14 @@ import { getApi } from '../../utils/helper'
 import StockFilter from './StockFilter'
 import StockSearch from './StockSearch'
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min'
+import Box from './ListingView/Box'
+import Table from './ListingView/Table'
 
 function StockListing() {
     const [stocks, setStocks] = useState([])
     const [openFilter, setOpenFilter] = useState(false)
     const [openSearch, setOpenSearch] = useState(false)
+    const [tableView, setTableView] = useState(false)
     const history = useHistory();
     const location = useLocation();
     const params = new URLSearchParams(location)
@@ -106,11 +109,6 @@ function StockListing() {
         }
     }, [])
 
-    const getDate = (date) => {
-        const cDate = new Date(date)
-        return cDate.toDateString()
-    }
-
   return (
     <>
         {
@@ -123,37 +121,31 @@ function StockListing() {
             <h1>Stock Listing</h1>
 
             <div className="filter_box">
-                <button className={`filter_icon ${ openFilter && 'clicked' }`} onClick={openFilterHandler}>
+                <button className={`filter_icon ${ openFilter ? 'clicked' : '' }`} onClick={openFilterHandler}>
                     <img src="./filter.svg" alt="" />
+                </button>
+                <button className="filter_icon" onClick={()=>setTableView(!tableView)}>
+                    <img src="./table.svg" alt="" />
                 </button>
             </div>
 
             <div className="filter_box search_box">
-                <button className={`filter_icon ${ openSearch && 'clicked' }`} onClick={openSearchHandler}>
+                <button className={`filter_icon ${ openSearch ? 'clicked' : '' }`} onClick={openSearchHandler}>
                     <img src="./search.svg" alt="" />
                 </button>
             </div>
         </div>
 
-        <div className="stock_listing_container" style={{ marginTop: "20px" }}>
-            {
-                stocks && stocks.map((item, index) => {
-                    return (
-                        <div key={index} className='stock_box'>
-                            <div>
-                                <p>Lot No. <b>{item.lotNo}</b></p>
-                                <p>Desc. <b>{item.desc}</b></p>
-                                <p className='date_box'>{getDate(item.date)}</p>
-                                <p>Qty. <b>{item.qty}</b></p>
-                                <p>Price <b>{item.price}</b></p>
-                                <p className='total_box'>Total: {item.qty * item.price}</p>
-                            </div>
-                        </div>
-                    )
-                })
-            }
+        <div className='total_listing'>
+            Total: <b>{stocks ? stocks.length : 0}</b>
         </div>
 
+        {
+            stocks && !tableView ? <Box stocks={stocks} /> : ''
+        }
+        {
+            stocks && tableView ? <Table stocks={stocks} /> : ''
+        }
     </>
   )
 }

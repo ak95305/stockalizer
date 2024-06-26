@@ -44,7 +44,7 @@ const getAllStocks = async (req, res, next) => {
         let toDate = new Date(req.query.to_date)
         matchCondition.date = { $lte: toDate }
     }
-    console.log(matchCondition)
+    
     let stocks;
     try{
         // stocks = await Stock.find()

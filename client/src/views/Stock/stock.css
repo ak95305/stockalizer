@@ -34,6 +34,8 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
 }
 
 .search_box{
@@ -116,4 +118,19 @@
     border: 1px solid #333;
     font-weight: 400;
     padding: 1px 4px;
+}
+
+.stock_listing_container.table table th,
+.stock_listing_container.table table td{
+    min-width: 120px;
+    padding: 10px;
+}
+
+.stock_listing_container.table {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.total_listing{
+    margin-top: 20px;
 }
