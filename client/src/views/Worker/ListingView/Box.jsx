@@ -20,6 +20,8 @@ function Box({ stocks }) {
                 return 'Cutting Master'
             case 6: 
                 return 'Rikshaw'
+            case 7: 
+                return 'Ladies'
         }
     }
 
