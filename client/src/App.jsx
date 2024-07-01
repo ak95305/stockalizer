@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import AddStock from './views/Stock/AddStock'
 import StockListing from './views/Stock/StockListing'
 import Home from './views/Home/Home'
+import WorkerListing from './views/Worker/WorkerListing'
+import AddWorker from './views/Worker/AddWorker'
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/add-stock" component={AddStock} />
               <Route path="/stocks" component={StockListing} />
+              <Route path="/workers" component={WorkerListing} />
+              <Route path="/add-worker" component={AddWorker} />
             </Switch>
           </div>
       </main>

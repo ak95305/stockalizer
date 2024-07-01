@@ -1,5 +1,6 @@
 const express = require('express')
 const stocksRouter = require('./routes/stocks-routes')
+const workerRouter = require('./routes/workers-routes')
 const userRouter = require('./routes/users-routes')
 const bodyParser = require('body-parser')
 const HttpError = require('./models/http-error')
@@ -16,6 +17,7 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.use("/api/stock", stocksRouter)
+app.use("/api/worker", workerRouter)
 
 app.use((req, res, next) => {
     throw new HttpError("Could not find this route", 404)

@@ -22,24 +22,24 @@ function Home() {
             }
         ]
     },
-    // {
-    //     id:'workers',
-    //     title: 'Workers',
-    //     options: [
-    //         {
-    //             id: 1,
-    //             title: 'Workers Listings',
-    //             url: '/workers',
-    //             icon_url: './layers.svg'
-    //         },
-    //         {
-    //             id: 2,
-    //             title: 'Add Worker',
-    //             url: '/add-worker',
-    //             icon_url: './layers_add.svg'
-    //         }
-    //     ]
-    // }
+    {
+        id:'workers',
+        title: 'Workers',
+        options: [
+            {
+                id: 1,
+                title: 'Workers Listings',
+                url: '/workers',
+                icon_url: './worker.svg'
+            },
+            {
+                id: 2,
+                title: 'Add Worker',
+                url: '/add-worker',
+                icon_url: './worker_add.svg'
+            }
+        ]
+    }
   ]
 
   return (
