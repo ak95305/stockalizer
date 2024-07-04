@@ -6,13 +6,15 @@ import StockListing from './views/Stock/StockListing'
 import Home from './views/Home/Home'
 import WorkerListing from './views/Worker/WorkerListing'
 import AddWorker from './views/Worker/AddWorker'
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <>
       <Router basename={import.meta.env.APP_STATIC_BASE_PATH}>
       <Header />
-      
+      <Toaster />
+
       <main>
           <div>
             <Switch>

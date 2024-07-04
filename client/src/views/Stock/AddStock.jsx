@@ -4,17 +4,18 @@ import Input from '../../components/Form/Input/Input'
 import NumInput from '../../components/Form/NumInput/NumInput'
 import { postApi } from '../../utils/helper'
 import Button from '../../components/Form/Button/Button'
+import toast from 'react-hot-toast'
 
 function AddStock() {
-  const [numBox, setNumBox] = useState('')
-  const [apiMessage, setApiMessage] = useState('')
-  const [formData, setFormData] = useState({
+  const defaultValue = {
     lotNo: '',
     desc: '',
     qty: '',
     price: '',
     date: ''
-  })
+  }
+  const [numBox, setNumBox] = useState('')
+  const [formData, setFormData] = useState(defaultValue)
 
   const handleNumBox = (e, type) => {
     e.preventDefault()
@@ -50,9 +51,10 @@ function AddStock() {
     const data = await postApi('stock', newStock)
 
     if(data.status) {
-      setApiMessage('Success')
+      toast.success('Stock Added')
+      setFormData(defaultValue)
     } else {
-      setApiMessage('Something\'s Wrong')
+      toast.error('Something\'s Wrong')
     }
   }
 
@@ -65,9 +67,9 @@ function AddStock() {
                 <Input type='text' label='Lot No.' name='lotNo' value={ formData.lotNo } onChange={ handleInputChange } />
                 <Input type='text' label='Description' name='desc' value={ formData.desc } onChange={ handleInputChange } />
                 <Input type='text' onClick={(e)=>handleNumBox(e, 'qty')} label='Qty' value={ formData.qty } readOnly/>
-                <Input type='text' onClick={(e)=>handleNumBox(e, 'price')} label='Price' value={ formData.price } readOnly/>
+                {/* <Input type='text' onClick={(e)=>handleNumBox(e, 'price')} label='Price' value={ formData.price } readOnly/> */}
 
-                <div className='total'>Total: <b>{formData.qty * formData.price}</b></div>
+                {/* <div className='total'>Total: <b>{formData.qty * formData.price}</b></div> */}
 
                 {
                   numBox && <NumInput closeNumBox={closeNumBox} submitNumBox={submitNumBox} name={numBox} value={ formData[numBox] } />
@@ -75,7 +77,6 @@ function AddStock() {
 
                 <Input type='date' onChange={handleInputChange} name="date" label='Date' value={ formData.date }/>
 
-                { apiMessage }
                 <div className="btn_group">
                   <Button btnType='primary' label='Submit' className='submit_btn' formBtnType='submit' />
                 </div>

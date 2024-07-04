@@ -8,7 +8,7 @@ function Input({ label, type, value, disabled, readOnly, onClick, onChange, name
         <input 
           className='form_input' 
           type={ type } 
-          defaultValue={ value } 
+          value={ value } 
           disabled={disabled} 
           readOnly={readOnly} 
           onClick={onClick}

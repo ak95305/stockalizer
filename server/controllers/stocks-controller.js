@@ -85,7 +85,7 @@ const createStock = async (req, res, next) => {
         lotNo: 'required',
         desc: 'required',
         qty: 'required',
-        price: 'required',
+        // price: 'required',
         date: 'required'
     }
 
