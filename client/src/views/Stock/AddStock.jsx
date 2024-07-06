@@ -67,9 +67,6 @@ function AddStock() {
                 <Input type='text' label='Lot No.' name='lotNo' value={ formData.lotNo } onChange={ handleInputChange } />
                 <Input type='text' label='Description' name='desc' value={ formData.desc } onChange={ handleInputChange } />
                 <Input type='text' onClick={(e)=>handleNumBox(e, 'qty')} label='Qty' value={ formData.qty } readOnly/>
-                {/* <Input type='text' onClick={(e)=>handleNumBox(e, 'price')} label='Price' value={ formData.price } readOnly/> */}
-
-                {/* <div className='total'>Total: <b>{formData.qty * formData.price}</b></div> */}
 
                 {
                   numBox && <NumInput closeNumBox={closeNumBox} submitNumBox={submitNumBox} name={numBox} value={ formData[numBox] } />
