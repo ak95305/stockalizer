@@ -2,24 +2,24 @@ const HttpError = require("../models/http-error")
 const Stock = require("../models/stock")
 const Validator = require('validatorjs')
 
-// const getPlaceById = async (req, res, next) => {
-//     const placeId = req.params.pid
-//     let place;
+const getStockById = async (req, res, next) => {
+    const stockId = req.params.sid
+    let stock;
 
-//     try{
-//         place = await Place.findById(placeId)
+    try{
+        stock = await Stock.findById(stockId)
         
-//         if(!place){
-//             return next(new HttpError("No place can be found with provided place id.", 404))
-//         }
-//     } catch(err) {
-//         const error = new HttpError("Unable to find place", 400)
-//         return next(error)
-//     }
+        if(!stock){
+            return next(new HttpError("No stock can be found with provided stock id.", 404))
+        }
+    } catch(err) {
+        const error = new HttpError("Unable to find stock", 400)
+        return next(error)
+    }
     
-//     res.status(200)
-//     res.json({ place: place.toObject({ getters: true }) })
-// }
+    res.status(200)
+    res.json({ stock })
+}
 
 const getAllStocks = async (req, res, next) => {
     let matchCondition = {}
@@ -174,7 +174,7 @@ const createStock = async (req, res, next) => {
 //     res.json({ message: 'Place Deleted' })
 // }
 
-// exports.getPlaceById = getPlaceById
+exports.getStockById = getStockById
 exports.getAllStocks = getAllStocks
 exports.createStock = createStock
 // exports.udpatePlaceById = udpatePlaceById

@@ -4,7 +4,7 @@ const authToken = require('../middlewares/auth');
 
 const router = express.Router();
 
-// router.get("/:pid", stocksController.getPlaceById)
+router.get("/:sid", stocksController.getStockById)
 
 // router.get("/user/:uid", stocksController.getPlaceByUserId)
 

@@ -39,8 +39,10 @@ function Table({ stocks }) {
                 <td></td>
                 <td></td>
                 <td><b>{stocks.reduce((total, item) => total+item.qty, 0)}</b></td>
-                <td>Avg. <i>{stocks.reduce((total, item) => total+item.price, 0)/stocks.length}</i></td>
-                <td><b>{stocks.reduce((total, item) => total+(item.qty*item.price), 0)}</b></td>
+                <td></td>
+                <td></td>
+                {/* <td>Avg. <i>{stocks.reduce((total, item) => total+item.price, 0)/stocks.length}</i></td> */}
+                {/* <td><b>{stocks.reduce((total, item) => total+(item.qty*item.price), 0)}</b></td> */}
             </tr>
             </tbody>
         </table>
