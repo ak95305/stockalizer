@@ -3,7 +3,7 @@ import { getApi } from '../../../utils/helper';
 import StockForm from '../../../components/Stock/StockForm';
 import toast from 'react-hot-toast';
 
-function Box({ stocks }) {
+function Box({ stocks, getStocks }) {
     const [openFormData, setOpenFormData] = useState(null)
 
     const getDate = (date) => {
@@ -39,6 +39,11 @@ function Box({ stocks }) {
         }
     }
 
+    const closeEditForm = () => {
+        setOpenFormData(null)
+        getStocks()
+    }
+
     return (
         <div className="stock_listing_container" style={{ marginTop: "20px" }}>
             {
@@ -47,7 +52,7 @@ function Box({ stocks }) {
                     <div className="cross_img" onClick={() => {setOpenFormData(false)}}>
                         <img src='./cross.svg' />
                     </div>
-                    <StockForm stock={openFormData}/>
+                    <StockForm stock={openFormData} type="edit" closeEditForm={closeEditForm}/>
                 </div>
                 : ''
             }
@@ -60,8 +65,6 @@ function Box({ stocks }) {
                                 <p>Desc. <b>{item.desc}</b></p>
                                 <p className='date_box'>{getDate(item.date)}</p>
                                 <p>Qty. <b>{item.qty}</b></p>
-                                {/* <p>Price <b>{item.price}</b></p> */}
-                                {/* <p className='total_box'>Total: {item.qty * item.price}</p> */}
                             </div>
                         </div>
                     )

@@ -15,8 +15,8 @@ function Table({ stocks }) {
                     <th>Lot No.</th>
                     <th>Desc.</th>
                     <th>Qty.</th>
-                    <th>Price</th>
-                    <th>Total</th>
+                    {/* <th>Price</th> */}
+                    {/* <th>Total</th> */}
                 </tr>
             </thead>
             <tbody>
@@ -28,8 +28,8 @@ function Table({ stocks }) {
                             <td>{item.lotNo}</td>
                             <td>{item.desc}</td>
                             <td>{item.qty}</td>
-                            <td>{item.price}</td>
-                            <td>{item.qty * item.price}</td>
+                            {/* <td>{item.price}</td> */}
+                            {/* <td>{item.qty * item.price}</td> */}
                         </tr>
                     )
                 })
@@ -39,8 +39,6 @@ function Table({ stocks }) {
                 <td></td>
                 <td></td>
                 <td><b>{stocks.reduce((total, item) => total+item.qty, 0)}</b></td>
-                <td></td>
-                <td></td>
                 {/* <td>Avg. <i>{stocks.reduce((total, item) => total+item.price, 0)/stocks.length}</i></td> */}
                 {/* <td><b>{stocks.reduce((total, item) => total+(item.qty*item.price), 0)}</b></td> */}
             </tr>

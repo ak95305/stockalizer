@@ -12,7 +12,7 @@ router.get("/", stocksController.getAllStocks)
 
 router.post("/", stocksController.createStock)
 
-// router.patch("/:pid", stocksController.udpatePlaceById)
+router.post("/:sid", stocksController.udpateStockById)
 
 // router.delete("/:pid", stocksController.deletePlaceById)
 

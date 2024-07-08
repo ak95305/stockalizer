@@ -5,13 +5,13 @@ import Input from '../Form/Input/Input'
 import NumInput from '../Form/NumInput/NumInput'
 import Button from '../Form/Button/Button'
 
-const StockForm = ({ stock }) => {
+const StockForm = ({ stock, type, closeEditForm }) => {
     let date = stock && stock.date ? new Date(stock.date) : ''
     const defaultValue = {
         lotNo: stock && stock.lotNo ? stock.lotNo : '',
         desc: stock && stock.desc ? stock.desc : '',
         qty: stock && stock.qty ? stock.qty : '',
-        date: stock && stock.date ? date.getDate()+'-' + (date.getMonth()+1) + '-'+date.getFullYear() : ''
+        date: stock && stock.date ? date.getFullYear()+'-' + (date.getMonth() < 9 ? "0"+(date.getMonth() +1) : date.getMonth() +1) + '-' + (date.getDate() < 9 ? "0"+(date.getDate() +1) : date.getDate() +1) : ''
     }
 
     const [numBox, setNumBox] = useState('')
@@ -44,7 +44,6 @@ const StockForm = ({ stock }) => {
             lotNo: formData.lotNo,
             desc: formData.desc,
             qty: formData.qty,
-            price: formData.price,
             date: formData.date
         };
         
@@ -56,10 +55,22 @@ const StockForm = ({ stock }) => {
         } else {
           toast.error('Something\'s Wrong')
         }
-      }
+    }
+
+    const submitEditHandler = async (e) => {
+        e.preventDefault()
+
+        const data = await postApi(`stock/${stock._id}`, formData)
+        if(data.status) {
+            toast.success('Stock Updated')
+            closeEditForm()
+        } else {
+            toast.error('Something\'s Wrong')
+        }
+    }
 
     return (
-        <form action="" onSubmit={ submitHandler }>
+        <form action="" onSubmit={ type = 'edit' ? submitEditHandler : submitHandler }>
             <Input type='text' label='Lot No.' name='lotNo' value={ formData.lotNo } onChange={ handleInputChange } />
             <Input type='text' label='Description' name='desc' value={ formData.desc } onChange={ handleInputChange } />
             <Input type='text' onClick={(e)=>handleNumBox(e, 'qty')} label='Qty' value={ formData.qty } readOnly/>

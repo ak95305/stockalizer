@@ -116,36 +116,38 @@ const createStock = async (req, res, next) => {
     res.json({ stock })
 }
 
-// const udpatePlaceById = async (req, res, next) => {
-//     let placeId = req.params.pid;
-//     let { name, desc } = req.body;
+const udpateStockById = async (req, res, next) => {
+    let stockId = req.params.sid;
+    let { lotNo, desc, qty, date } = req.body;
 
-//     let place;
-//     try{
-//         place = await Place.findById(placeId)
+    let stock;
+    try{
+        stock = await Stock.findById(stockId)
         
-//         if(!place){
-//             return next(new HttpError("No place can be found with provided place id.", 404))
-//         }
-//     } catch(err) {
-//         const error = new HttpError("Unable to find place", 400)
-//         return next(error)
-//     }
+        if(!stock){
+            return next(new HttpError("No stock can be found with provided stock id.", 404))
+        }
+    } catch(err) {
+        const error = new HttpError("Unable to find stock", 400)
+        return next(error)
+    }
 
-//     place.name = name
-//     place.desc = desc
+    stock.lotNo = lotNo
+    stock.desc = desc
+    stock.qty = qty
+    stock.date = date
 
-//     try{
-//         await place.save()
-//     } catch (err) {
-//         console.log(err)
-//         const error = new HttpError("Unable to update place!", 400)
-//         return next(error)
-//     }
+    try{
+        await stock.save()
+    } catch (err) {
+        console.log(err)
+        const error = new HttpError("Unable to update place!", 400)
+        return next(error)
+    }
 
-//     res.status(200);
-//     res.json({ place : place.toObject({ getters: true })})
-// }
+    res.status(200);
+    res.json({ stock })
+}
 
 // const deletePlaceById = async (req, res, next) => {
 //     let placeId = req.params.pid;
@@ -177,5 +179,5 @@ const createStock = async (req, res, next) => {
 exports.getStockById = getStockById
 exports.getAllStocks = getAllStocks
 exports.createStock = createStock
-// exports.udpatePlaceById = udpatePlaceById
+exports.udpateStockById = udpateStockById
 // exports.deletePlaceById = deletePlaceById

@@ -141,7 +141,7 @@ function StockListing() {
         </div>
 
         {
-            stocks && !tableView ? <Box stocks={stocks} /> : ''
+            stocks && !tableView ? <Box getStocks={getStocks} stocks={stocks} /> : ''
         }
         {
             stocks && tableView ? <Table stocks={stocks} /> : ''
