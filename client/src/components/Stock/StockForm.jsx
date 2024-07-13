@@ -70,7 +70,7 @@ const StockForm = ({ stock, type, closeEditForm }) => {
     }
 
     return (
-        <form action="" onSubmit={ type = 'edit' ? submitEditHandler : submitHandler }>
+        <form action="" onSubmit={ type == 'edit' ? submitEditHandler : submitHandler }>
             <Input type='text' label='Lot No.' name='lotNo' value={ formData.lotNo } onChange={ handleInputChange } />
             <Input type='text' label='Description' name='desc' value={ formData.desc } onChange={ handleInputChange } />
             <Input type='text' onClick={(e)=>handleNumBox(e, 'qty')} label='Qty' value={ formData.qty } readOnly/>
